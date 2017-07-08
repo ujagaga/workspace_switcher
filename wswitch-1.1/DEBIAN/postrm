@@ -1,0 +1,7 @@
+#!/bin/sh
+# this script runs after the package has been removed
+
+rm -fr $HOME/.wswitch/
+rm -f /usr/bin/wswitch
+
+exit 0

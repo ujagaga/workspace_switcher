@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cd "$(dirname "$0")"
+
+wmctrl -s $1
+
+IMGNAME="$HOME/.wswitch/bckgnd$1.png"
+
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-image -s $IMGNAME
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 0
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 2

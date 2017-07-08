@@ -1,0 +1,11 @@
+Package: wswitch
+Version: 1.1
+Section: base
+Priority: optional
+Architecture: all
+Depends: wmctrl
+Maintainer: Rada Berar <ujagaga@gmail.com>
+Homepage: 
+Description: utility for quick switcing between workspaces 
+ utility for quick switcing between workspaces
+ and changing panel background for better diferencing.

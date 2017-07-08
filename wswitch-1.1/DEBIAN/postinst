@@ -1,0 +1,10 @@
+#!/bin/sh
+# postinst script
+
+mkdir $HOME/.wswitch
+cp -f /opt/wswitch/*.png $HOME/.wswitch/
+cp -f /opt/wswitch/wswitch /usr/bin/wswitch
+chmod 777 $HOME/.wswitch
+rm -fr /opt/wswitch
+
+exit 0
