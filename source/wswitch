@@ -1,26 +1,41 @@
 #!/bin/sh
 
-cd "$(dirname "$0")"
+CUR_WSP=$(xdotool get_desktop)
+COUNT_WSP=$(xdotool get_num_desktops)
 
-case $1 in
-    ''|*[!0-9]*) 
-    echo ""
-    echo "ERROR: Invalid workspace number."
-    echo ""
-    echo "usage: wswitch <workspace number>"
-	echo "You may change panel appearance images in folder:"
-	echo "$HOME/.wswitch/" 
-	echo ""
+if [ "$1" = "c" ]; then
+	NEXT_WSP=$((CUR_WSP + 1))
+	if [ $NEXT_WSP = $COUNT_WSP ]; then
+		NEXT_WSP=0
+	fi	
+else
+	case $1 in
+    		''|*[!0-9]*) 
+
+        	echo ""
+    		echo "	ERROR: Invalid workspace number."
+    		echo ""
+    		echo "	usage:"
+		echo "	  1. To switch to specific workspace: wswitch <workspace number>"
+		echo "	  2. To switch to next workspace: wswitch c"
+		echo ""
+		echo "	You may change panel appearance images in folder: $HOME/.wswitch/" 
+		echo ""
+    		exit 0
 	;;
-    *) 
-    wmctrl -s $1
+    	*) 	
+    		NEXT_WSP=$1
+		if [ $NEXT_WSP -gt $((COUNT_WSP - 1)) ]; then		
+			NEXT_WSP=0
+		fi	
+    	;;
+	esac
+fi
 
-	IMGNAME="$HOME/.wswitch/bckgnd$1.png"
+xdotool set_desktop $NEXT_WSP
 
-	xfconf-query -c xfce4-panel -p /panels/panel-0/background-image -s $IMGNAME
-	xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 0
-	xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 2
-    ;;
-esac
+IMGNAME="$HOME/.wswitch/bckgnd$NEXT_WSP.png"
 
-
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-image -s $IMGNAME
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 0
+xfconf-query -c xfce4-panel -p /panels/panel-0/background-style -s 2

@@ -1,9 +1,9 @@
 Package: wswitch
-Version: 1.1
+Version: 1.2
 Section: base
 Priority: optional
 Architecture: all
-Depends: wmctrl
+Depends: xdotool
 Maintainer: Rada Berar <ujagaga@gmail.com>
 Homepage: 
 Description: utility for quick switcing between workspaces 
