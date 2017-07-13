@@ -1,16 +1,21 @@
 # workspace_switcher
 Xfce desktop shell script to switch between workspaces and change panel color for better distinguishing.
 
-Just call the shell script with the number of desired workspace as a parameter. 
-Example: wswitch 1
-to switch to workspace 1 and set bckgnd1.png as background.
+Just call the shell script with the number of desired workspace as a parameter:
+	wswitch 1
+will switch to workspace 1 and set bckgnd1.png as background.
+
 Number of workspace is zero based, so you have workspace 0, 1, 2,...
 bckgnd0.png, bckgnd1.png,... are used to set background image. You may change them according to your preferences.
 
-The script relies on wmctrl package, so I made a debian package to install the dependency as well.
+There is also a switch "c" to instruct the script so cycle through workspaces, so executing:
+	wswitch c
+will switch to next workspace
+
+The script relies on xdotool package, so I made a debian package to install the dependency as well.
 
 The "source" folder contains the workspace switcher script "wswitch".
-The "wswitch-1.1" folder is there for generating the debian package.
+The "wswitch-1.2" folder is there for generating the debian package.
 To generate the package, just run "build_installer.sh".
 
 Once you install the "wswitch_install-1.1.deb" using:
